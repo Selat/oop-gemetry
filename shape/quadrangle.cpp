@@ -23,9 +23,9 @@ QString Quadrangle::getName()
 	return "Quadrangle";
 }
 
-void Quadrangle::setBeamLength(double length)
+void Quadrangle::setBeamLength(int id, double length)
 {
-
+	m_lengths[id] = length;
 }
 
 void Quadrangle::setBeamLength(int id)

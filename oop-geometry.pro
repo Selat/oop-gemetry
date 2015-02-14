@@ -9,7 +9,9 @@ SOURCES += \
     shape/shape.cpp \
     shape/circle.cpp \
     shape/filledcircle.cpp \
-    shape/quadrangle.cpp
+    shape/quadrangle.cpp \
+    shape/quadranglediagonals.cpp \
+    shape/quadranglefilled.cpp
 
 HEADERS += \
 	mainwindow.hpp \
@@ -18,4 +20,6 @@ HEADERS += \
     shape/shape.hpp \
     shape/circle.hpp \
     shape/filledcircle.hpp \
-    shape/quadrangle.hpp
+    shape/quadrangle.hpp \
+    shape/quadranglediagonals.hpp \
+    shape/quadranglefilled.hpp

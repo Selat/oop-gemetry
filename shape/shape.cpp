@@ -43,14 +43,18 @@ QWidget* Shape::createControlWidget(QWidget *parent)
 	connect(this, SIGNAL(show()), widget, SLOT(show()));
 	QVBoxLayout *layout = new QVBoxLayout();
 	for(auto controller : m_shape_controllers) {
-		layout->addWidget((this->*controller)(parent));
-		QFrame *frame = new QFrame;
-		frame->setFrameShadow(QFrame::Sunken);
-		frame->setLineWidth(1);
-		frame->setFixedHeight(3);
- 		frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-		frame->setStyleSheet(QString("background-color: #c0c0c0;"));
-		layout->addWidget(frame);
+		QWidget *cur_widget = (this->*controller)(parent);
+		if(cur_widget != nullptr) {
+			layout->addWidget(cur_widget);
+			QFrame *frame = new QFrame;
+			frame->setFrameShadow(QFrame::Sunken);
+			frame->setLineWidth(1);
+			frame->setFixedHeight(3);
+			frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+			frame->setStyleSheet(QString("background-color: #c0c0c0;"));
+			layout->addWidget(frame);
+
+		}
 	}
 	widget->setLayout(layout);
 	return widget;

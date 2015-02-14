@@ -3,6 +3,8 @@
 #include "shape/circle.hpp"
 #include "shape/filledcircle.hpp"
 #include "shape/quadrangle.hpp"
+#include "shape/quadranglediagonals.hpp"
+#include "shape/quadranglefilled.hpp"
 #include "mainwindow.hpp"
 
 int main(int argc, char **argv)
@@ -15,6 +17,10 @@ int main(int argc, char **argv)
     window.addFigure(filledcircle);
     Quadrangle *quadrangle = new Quadrangle();
     window.addFigure(quadrangle);
+    QuadrangleDiagonals *quadranglediagonals = new QuadrangleDiagonals();
+    window.addFigure(quadranglediagonals);
+    QuadrangleFilled *quadranglefilled = new QuadrangleFilled();
+    window.addFigure(quadranglefilled);
     window.show();
     return app.exec();
 }

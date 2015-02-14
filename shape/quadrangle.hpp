@@ -11,11 +11,11 @@ public:
 	virtual QString getName();
 
 public slots:
-	void setBeamLength(double length);
+	void setBeamLength(int id, double length);
 	void setBeamLength(int id);
 	void setBeamAngle(int id);
 
-private:
+protected:
 	QWidget* onCreateControlWidget(QWidget *parent = 0);
 	virtual void mydraw(QPainter &painter);
 
