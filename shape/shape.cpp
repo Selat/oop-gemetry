@@ -151,7 +151,6 @@ QWidget* Shape::onCreateControlWidget(QWidget *parent)
 	angle->setWrapping(true);
 	angle->setMaximum(359);
 	angle->setValue(270);
-	qDebug() << angle->minimum() << " " << angle->maximum();
 	layout3->addWidget(angle, 0, Qt::AlignJustify);
 	main_layout->addLayout(layout3);
 	widget->setLayout(main_layout);

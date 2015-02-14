@@ -15,6 +15,10 @@ public:
 	void setMinimum(double val);
 	void setMaximum(double val);
 
+	double getMinimum();
+	double getMaximum();
+	double getValue();
+
 public slots:
 	void setValue(int);
 	void setValue(double);

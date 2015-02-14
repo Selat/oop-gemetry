@@ -41,6 +41,27 @@ void SliderControl::setMaximum(double val)
 	m_text->setValidator(new QDoubleValidator(dmin, dmax, 5, this));
 }
 
+double SliderControl::getMinimum()
+{
+	const QDoubleValidator *validator = dynamic_cast<const QDoubleValidator*>(m_text->validator());
+	return validator->bottom();
+}
+
+double SliderControl::getMaximum()
+{
+	const QDoubleValidator *validator = dynamic_cast<const QDoubleValidator*>(m_text->validator());
+	return validator->top();
+}
+
+double SliderControl::getValue()
+{
+	double res;
+	QString text = m_text->text();
+	QTextStream stream(&text);
+	stream >> res;
+	return res;
+}
+
 void SliderControl::setValue(int val)
 {
 	int imin = m_slider->minimum();
