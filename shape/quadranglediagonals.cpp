@@ -2,7 +2,6 @@
 
 QuadrangleDiagonals::QuadrangleDiagonals()
 {
-	m_shape_controllers.push_back((ShapeControl)&QuadrangleDiagonals::onCreateControlWidget);
 }
 
 QString QuadrangleDiagonals::getName()

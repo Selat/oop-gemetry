@@ -3,7 +3,7 @@
 
 #include "quadrangle.hpp"
 
-class QuadrangleDiagonals : public Quadrangle
+class QuadrangleDiagonals : public ShapeHelper <Quadrangle>
 {
 	Q_OBJECT
 public:
@@ -11,7 +11,7 @@ public:
 	virtual QString getName();
 
 protected:
-	QWidget* onCreateControlWidget(QWidget *parent = 0);
+	virtual QWidget* onCreateControlWidget(QWidget *parent = 0);
 	virtual void mydraw(QPainter &painter);
 };
 

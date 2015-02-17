@@ -10,8 +10,6 @@
 
 Quadrangle::Quadrangle()
 {
-	m_shape_controllers.push_back((ShapeControl)&Quadrangle::onCreateControlWidget);
-
 	for(int i = 0; i < 4; ++i) {
 		m_lengths[i] = 0.3;
 		m_angles[i] = M_PI / 2.0 * i;

@@ -13,7 +13,6 @@ FilledCircle::FilledCircle() :
 	m_inner_radius(0.5),
 	m_color(Qt::red)
 {
-	m_shape_controllers.push_back((ShapeControl)&FilledCircle::onCreateControlWidget);
 }
 
 QString FilledCircle::getName()
@@ -38,7 +37,6 @@ void FilledCircle::setColor()
 
 QWidget* FilledCircle::onCreateControlWidget(QWidget *parent)
 {
-	qDebug() << "FilledCircle::create!";
 	m_parent = parent;
 	QWidget *widget = new QWidget;
 	QVBoxLayout *layout = new QVBoxLayout;

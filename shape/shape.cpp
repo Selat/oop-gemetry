@@ -17,11 +17,20 @@ Shape::Shape() :
 	m_is_visible(true),
 	m_scalex(1.0), m_scaley(1.0)
 {
-	m_shape_controllers.push_back(&Shape::onCreateControlWidget);
 }
 
 Shape::~Shape()
 {
+}
+
+QWidget* Shape::callUp(QWidget *parent)
+{
+	QWidget* widget = new QWidget(parent);
+	connect(this, SIGNAL(hide()), widget, SLOT(hide()));
+	connect(this, SIGNAL(show()), widget, SLOT(show()));
+	QVBoxLayout *layout = new QVBoxLayout();
+	widget->setLayout(layout);
+	return widget;
 }
 
 void Shape::draw(QPainter &painter)
@@ -34,30 +43,6 @@ void Shape::draw(QPainter &painter)
 		mydraw(painter);
 		painter.restore();
 	}
-}
-
-QWidget* Shape::createControlWidget(QWidget *parent)
-{
-	QWidget* widget = new QWidget;
-	connect(this, SIGNAL(hide()), widget, SLOT(hide()));
-	connect(this, SIGNAL(show()), widget, SLOT(show()));
-	QVBoxLayout *layout = new QVBoxLayout();
-	for(auto controller : m_shape_controllers) {
-		QWidget *cur_widget = (this->*controller)(parent);
-		if(cur_widget != nullptr) {
-			layout->addWidget(cur_widget);
-			QFrame *frame = new QFrame;
-			frame->setFrameShadow(QFrame::Sunken);
-			frame->setLineWidth(1);
-			frame->setFixedHeight(3);
-			frame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-			frame->setStyleSheet(QString("background-color: #c0c0c0;"));
-			layout->addWidget(frame);
-
-		}
-	}
-	widget->setLayout(layout);
-	return widget;
 }
 
 void Shape::rotate(qreal angle)
@@ -120,7 +105,6 @@ void Shape::setAngle(int angle)
 
 QWidget* Shape::onCreateControlWidget(QWidget *parent)
 {
-	qDebug() << "Shape::create!";
 	QWidget *widget = new QWidget(parent);
 	QVBoxLayout *main_layout = new QVBoxLayout;
 	QHBoxLayout *layout1 = new QHBoxLayout;

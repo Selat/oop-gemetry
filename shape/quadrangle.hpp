@@ -3,7 +3,7 @@
 
 #include "shape.hpp"
 
-class Quadrangle : public Shape
+class Quadrangle : public ShapeHelper <Shape>
 {
 	Q_OBJECT
 public:
@@ -16,7 +16,7 @@ public slots:
 	void setBeamAngle(int id);
 
 protected:
-	QWidget* onCreateControlWidget(QWidget *parent = 0);
+	virtual QWidget* onCreateControlWidget(QWidget *parent = 0);
 	virtual void mydraw(QPainter &painter);
 
 	qreal m_angles[4];

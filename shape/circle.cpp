@@ -5,10 +5,8 @@
 #include "slidercontrol.hpp"
 
 Circle::Circle() :
-	Shape(),
 	m_radius(0.5)
 {
-	m_shape_controllers.push_back((ShapeControl)&Circle::onCreateControlWidget);
 }
 
 QString Circle::getName()
@@ -30,7 +28,6 @@ void Circle::mydraw(QPainter &painter)
 
 QWidget* Circle::onCreateControlWidget(QWidget *parent)
 {
-	qDebug() << "Circle::create!";
 	SliderControl *rad_control = new SliderControl(parent);
 	rad_control->setMinimum(0.1);
 	rad_control->setMaximum(1.0);

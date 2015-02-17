@@ -5,7 +5,7 @@
 
 #include "circle.hpp"
 
-class FilledCircle : public Circle
+class FilledCircle : public ShapeHelper <Circle>
 {
 	Q_OBJECT
 public:
@@ -18,7 +18,7 @@ public slots:
 	void setColor();
 
 protected:
-	QWidget* onCreateControlWidget(QWidget *parent = 0);
+	virtual QWidget* onCreateControlWidget(QWidget *parent = 0);
 
 	void mydraw(QPainter &painter);
 

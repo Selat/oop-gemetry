@@ -5,7 +5,7 @@
 
 #include "quadranglediagonals.hpp"
 
-class QuadrangleFilled : public QuadrangleDiagonals
+class QuadrangleFilled : public ShapeHelper <QuadrangleDiagonals>
 {
 	Q_OBJECT
 public:
@@ -16,7 +16,7 @@ public slots:
 	void setColor(int id);
 
 protected:
-	QWidget* onCreateControlWidget(QWidget *parent = 0);
+	virtual QWidget* onCreateControlWidget(QWidget *parent = 0);
 	virtual void mydraw(QPainter &painter);
 
 

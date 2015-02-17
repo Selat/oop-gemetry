@@ -7,8 +7,6 @@
 
 QuadrangleFilled::QuadrangleFilled()
 {
-	m_shape_controllers.push_back((ShapeControl)&QuadrangleFilled::onCreateControlWidget);
-
 	for(int i = 0; i < 4; ++i) {
 		m_colors[i] = Qt::red;
 	}
