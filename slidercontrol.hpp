@@ -2,6 +2,7 @@
 #define SLIDERCONTROL_HPP
 
 #include <QWidget>
+#include <QString>
 
 class QSlider;
 class QLineEdit;
@@ -22,6 +23,7 @@ public:
 public slots:
 	void setValue(int);
 	void setValue(double);
+	void textChanged(const QString &text);
 
 signals:
 	void valueChanged(double);

@@ -22,6 +22,7 @@ SliderControl::SliderControl(QWidget *parent) :
 	setLayout(layout);
 
 	connect(m_slider, SIGNAL(valueChanged(int)), this, SLOT(setValue(int)));
+	connect(m_text, SIGNAL(textChanged(const QString&)), this, SLOT(textChanged(const QString&)));
 	setValue(50);
 }
 
@@ -85,6 +86,15 @@ void SliderControl::setValue(double val)
 	double ratio = static_cast<double>(val - dmin) / (dmax - dmin);
 	int ival = ratio * (imax - imin) + imin;
 	m_slider->setValue(ival);
+}
+
+void SliderControl::textChanged(const QString &text)
+{
+	QString tmp(text);
+	QTextStream stream(&tmp);
+	double val;
+	stream >> val;
+	setValue(val);
 }
 
 void SliderControl::setTextValue(double val)
