@@ -2,7 +2,7 @@
 #include <QDebug>
 
 #include "canvas.hpp"
-#include "shape/shape.hpp"
+#include "shape.hpp"
 
 Canvas::Canvas(QWidget *parent) :
 	QWidget(parent),

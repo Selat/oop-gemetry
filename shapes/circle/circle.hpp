@@ -7,7 +7,7 @@
 
 class QLayout;
 
-class Circle : public ShapeHelper <Shape>
+class TEST_COMMON_DLLSPEC Circle : public ShapeHelper <Shape>
 {
 	Q_OBJECT
 public:

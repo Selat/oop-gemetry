@@ -6,7 +6,7 @@
 
 #include <QDebug>
 
-#include "shape/shape.hpp"
+#include "shape.hpp"
 #include "canvas.hpp"
 #include "mainwindow.hpp"
 

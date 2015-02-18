@@ -5,7 +5,7 @@
 
 #include "circle.hpp"
 
-class FilledCircle : public ShapeHelper <Circle>
+class TEST_COMMON_DLLSPEC FilledCircle : public ShapeHelper <Circle>
 {
 	Q_OBJECT
 public:

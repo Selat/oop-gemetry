@@ -15,6 +15,12 @@
 
 class QWidget;
 
+#if defined TEST
+#define TEST_COMMON_DLLSPEC  Q_DECL_EXPORT
+#else
+#define TEST_COMMON_DLLSPEC Q_DECL_IMPORT
+#endif
+
 class Shape : public QObject
 {
 	Q_OBJECT
@@ -107,5 +113,7 @@ QWidget* ShapeHelper<T>::createControlWidget(QWidget *parent)
 	}
 	return widget;
 }
+
+extern "C" TEST_COMMON_DLLSPEC void* createShape();
 
 #endif

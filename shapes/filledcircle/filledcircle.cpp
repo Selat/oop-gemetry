@@ -68,3 +68,8 @@ void FilledCircle::mydraw(QPainter &painter)
 	painter.drawEllipse(center, m_radius2, m_radius2);
 	painter.drawLine(center, circle_point);
 }
+
+extern "C" TEST_COMMON_DLLSPEC void* createShape()
+{
+	return new FilledCircle();
+}

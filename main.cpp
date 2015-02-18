@@ -1,26 +1,34 @@
 #include <QApplication>
+#include <QDir>
+#include <QDebug>
+#include <QLibrary>
 
-#include "shape/circle.hpp"
-#include "shape/filledcircle.hpp"
-#include "shape/quadrangle.hpp"
-#include "shape/quadranglediagonals.hpp"
-#include "shape/quadranglefilled.hpp"
 #include "mainwindow.hpp"
+
+typedef void* (*CreateShapePrototype) ();
+
+void loadLibs(MainWindow &window)
+{
+	QDir curdir;
+	QString filename;
+	foreach(filename, curdir.entryList()) {
+		if(QLibrary::isLibrary(filename)) {
+			QLibrary lib(curdir.filePath(filename));
+			CreateShapePrototype func = (CreateShapePrototype)lib.resolve("createShape");
+			if(func != NULL) {
+				qDebug() << "Found function createShape() in: " << filename;
+				Shape *shape = static_cast<Shape*>(func());
+				window.addFigure(shape);
+			}
+		}
+	}
+}
 
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     MainWindow window;
-    Circle *circle = new Circle();
-    window.addFigure(circle);
-    FilledCircle *filledcircle = new FilledCircle();
-    window.addFigure(filledcircle);
-    Quadrangle *quadrangle = new Quadrangle();
-    window.addFigure(quadrangle);
-    QuadrangleDiagonals *quadranglediagonals = new QuadrangleDiagonals();
-    window.addFigure(quadranglediagonals);
-    QuadrangleFilled *quadranglefilled = new QuadrangleFilled();
-    window.addFigure(quadranglefilled);
+    loadLibs(window);
     window.show();
     return app.exec();
 }
